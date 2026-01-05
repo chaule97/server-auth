@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record
+        id="res_config_settings_view_form_auth_autologin_via_jwt_cookie"
+        model="ir.ui.view"
+    >
+        <field
+            name="name"
+        >res.config.settings.view.form.auth.autologin.jwt.cookie</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <block name="integration" position="after">
+                <block title="JWT Cookie Autologin" name="jwt_cookie_autologin">
+                    <setting
+                        id="auth_autologin_jwt_cookie_name_setting"
+                        help="Shared cookie name"
+                    >
+                        <field name="auth_autologin_jwt_cookie_name" />
+                    </setting>
+
+                    <setting
+                        id="auth_autologin_jwks_url_setting"
+                        help="JWKS endpoint used to validate the cookie JWT signature."
+                    >
+                        <field name="auth_autologin_jwks_url" />
+                    </setting>
+
+                    <setting
+                        id="auth_autologin_userinfo_url_setting"
+                        help="Userinfo endpoint returning email, called with Authorization: Bearer &lt;JWT&gt;."
+                    >
+                        <field name="auth_autologin_userinfo_url" />
+                    </setting>
+                </block>
+            </block>
+        </field>
+    </record>
+</odoo>
