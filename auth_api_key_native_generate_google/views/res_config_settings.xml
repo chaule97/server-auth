@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 Trobz
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field
+            name="name"
+        >res.config.settings.view.form.inherit.auth.api.key.native.generate.google</field>
+        <field name="model">res.config.settings</field>
+        <field
+            name="inherit_id"
+            ref="auth_api_key_native_generate.res_config_settings_view_form"
+        />
+        <field name="arch" type="xml">
+            <setting id="auth_api_key_native_generate_setting" position="after">
+                <setting
+                    id="auth_api_key_native_generate_google_setting"
+                    string="Google Sign-in for API Keys"
+                    help="Exchange a Google ID token from a native app for an API key, through /api/auth/google/generate_api_key"
+                >
+                    <div class="content-group">
+                        <div class="row mt16">
+                            <label
+                                for="auth_google_api_key_audiences"
+                                class="col-lg-3 o_light_label"
+                            />
+                            <field
+                                name="auth_google_api_key_audiences"
+                                placeholder="e.g. 1234-abc.apps.googleusercontent.com"
+                            />
+                        </div>
+                        <div class="row mt16">
+                            <label
+                                for="auth_google_api_key_allowed_domains"
+                                class="col-lg-3 o_light_label"
+                            />
+                            <field
+                                name="auth_google_api_key_allowed_domains"
+                                placeholder="e.g. example.com"
+                            />
+                        </div>
+                    </div>
+                    <div
+                        class="content-group"
+                        invisible="not auth_google_api_key_audiences"
+                    >
+                        <div class="row mt16">
+                            <label
+                                for="auth_google_api_key_max_token_age"
+                                class="col-lg-3 o_light_label"
+                            />
+                            <field name="auth_google_api_key_max_token_age" />
+                        </div>
+                        <div class="row mt16">
+                            <label
+                                for="auth_google_api_key_key_name_prefix"
+                                class="col-lg-3 o_light_label"
+                            />
+                            <field name="auth_google_api_key_key_name_prefix" />
+                        </div>
+                        <div class="row mt16">
+                            <label
+                                for="auth_google_api_key_max_keys_per_user"
+                                class="col-lg-3 o_light_label"
+                            />
+                            <field name="auth_google_api_key_max_keys_per_user" />
+                        </div>
+                        <div class="mt16">
+                            <field
+                                name="auth_google_api_key_allow_mfa_users"
+                                class="w-auto me-2"
+                            />
+                            <label
+                                for="auth_google_api_key_allow_mfa_users"
+                                class="o_light_label"
+                            />
+                        </div>
+                    </div>
+                </setting>
+            </setting>
+        </field>
+    </record>
+</odoo>
